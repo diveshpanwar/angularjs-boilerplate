@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./library/global/jquery.min.js"></script>
+    <script src="./library/global/bootstrap.min.js"></script>
+    <script src="./library/angular/angular.min.js"></script>
+    <script src="./library/angular/angular-resource.min.js"></script>
+    <script src="./library/angular/angular-route.min.js"></script>
+    <script src="./library/common/dependencies.js"></script>
+    <script src="./library/common/app.js"></script>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/app.css">
+    <title>{{appName}}</title>
+</head>
+
+<body>
+    <div ng-include='"./components/navigation/navigation.component.html"'></div>
+    <div class="container-fluid" ng-view=""></div>
+    <div ng-include='"./components/footer/footer.component.html"'></div>
+</body>
+
+</html>
