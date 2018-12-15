@@ -1,0 +1,98 @@
+<div class="mb-6" ng-if="contentLoaded">
+    <div class="col-10 col-md-6 ml-auto mr-auto mt-1" ng-if="product">
+        <div class="card box-shadows">
+            <img class="card-img-top image-styling img-fluid mx-auto d-block img-thumbnail pl-2 pr-2" ng-src="{{product.imgUrl}}"
+                alt="{{product.displayName}}" style="margin-top: 3%" />
+            <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold special-font">
+                    {{ product.displayName }}
+                </h5>
+                <hr class="special-hr" />
+                <p class="text-center special-font">{{ product.desc }}</p>
+                <div class="row">
+                    <div class="col text-right">
+                        <h6 class="font-italic"><strong>Price:</strong></h6>
+                    </div>
+                    <div class="col text-left">
+                        <h6 class="font-italic">
+                            <del class="text-danger"> &#8377; {{ product.price }}</del>
+                        </h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <h6 class="font-italic"><strong>Offer Price:</strong></h6>
+                    </div>
+                    <div class="col text-left">
+                        <h6 class="font-italic">&#8377; {{ product.offerPrice }}</h6>
+                    </div>
+                </div>
+                <div class="row" ng-if="product.extra">
+                    <div class="col text-right">
+                        <h6 class="font-italic"><strong>Todays Offer:</strong></h6>
+                    </div>
+                    <div class="col text-left">
+                        <h6 class="font-italic">
+                            Extra &#8377; {{ product.extra }} off
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-right">
+                        <h6 class="font-italic"><strong>Discount:</strong></h6>
+                    </div>
+                    <div class="col text-left">
+                        <h6 class="font-italic">{{ product.discount }}%</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <h6 class="font-italic text-info"><strong>Ratings:</strong></h6>
+                    </div>
+                    <div class="col text-left" title={{userRating}}>
+                        <h6>
+                            <span ng-repeat="rate in rater" class="pointer" ng-class="{
+                        'text-yellow': userRating >= rate,
+                        'text-dark': userRating < rate
+                      }">
+                                &#9733;
+                            </span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <h6 class="font-italic text-info"><strong>Reviews:</strong></h6>
+                    </div>
+                    <div class="col text-left">
+                        <h6 class="font-italic text-info">{{ reviewCount }}</h6>
+                    </div>
+                </div>
+                <form [formGroup]="cartForm" (ngSubmit)="addToCart()">
+                    <div class="form-group form-row">
+                        <div class="col text-right mt-1 font-weight-bold font-italic">
+                            Quantity:
+                        </div>
+                        <div class="col text-left">
+                            <select name="productQuantity" id="productQuantity" formControlName="productQuantity" class="form-control col-8 col-md-5"
+                                style="height: 2rem; font-size: 0.8rem;" ng-if="maxQty">
+                                <option ng-repeat="counter in maxQty" value="{{counter}}">{{
+                                    counter
+                                    }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-center ">
+                        <input type="submit" value="Add To Cart" class="btn btn-outline-warning text-dark special-font font-weight-bold col-6" />
+                    </div>
+                </form>
+                <div class="form-group text-center " ng-if="userLoggedIn">
+                    <button class="btn btn-outline-info text-dark special-font font-weight-bold col-6" (click)="addToWishList()">
+                        Add To Wishlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

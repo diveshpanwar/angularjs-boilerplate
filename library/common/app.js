@@ -2,16 +2,19 @@ var app = angular.module("app", ['controllers', 'ngRoute', 'ngResource']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/login', {
-        templateUrl: '../components/login/login.component.html',
+        templateUrl: '../../components/login/login.component.html',
         controller: 'loginController'
     }).when('/signup', {
-        templateUrl: '../components/signup/signup.component.html',
+        templateUrl: '../../components/signup/signup.component.html',
         controller: 'signupController'
     }).when('/', {
-        templateUrl: '../components/home/home.component.html',
+        templateUrl: '../../components/home/home.component.html',
         controller: 'homeController'
+    }).when('/product/:productId', {
+        templateUrl: '../../components/single-product/single-product.component.html',
+        controller: 'singleProductController'
     }).when('/pageNotFound', {
-        templateUrl: '../components/error/error.component.html',
+        templateUrl: '../../components/error/error.component.html',
         controller: 'errorController'
     }).otherwise({
         redirectTo: '/pageNotFound'
