@@ -3,19 +3,27 @@
         <h4 class="text-center text-info font-weight-bold font-italic">{{heading}}</h4>
         <hr>
         <div class="card col-10 col-md-4 ml-auto mr-auto">
+            <div class="col-6 text-center ml-auto mr-auto mt-3" ng-if="authMessage">
+                <small class="text-center text-danger font-weight-bold">{{authMessage}}</small>
+            </div>
             <div class="card-body">
                 <div class="card-text">
                     <form ng-submit='login()' name="uiLoginForm">
                         <div class="form-group">
-                            <input type="text" name="username" id="username" ng-model="loginForm.username" placeholder="Username" class="form-control" required ng-class="{ 'is-invalid' : uiLoginForm.username.$invalid && uiLoginForm.username.$touched}">
-                            <small class="text-danger font-italic" ng-show="uiLoginForm.username.$error.required && uiLoginForm.username.$touched">Username is required.</small>
+                            <input type="email" name="email" id="email" ng-model="loginForm.email" placeholder="Email"
+                                class="form-control" required ng-class="{ 'is-invalid' : uiLoginForm.email.$invalid && uiLoginForm.email.$touched}">
+                            <small class="text-danger font-italic" ng-show="uiLoginForm.email.$error.required && uiLoginForm.email.$touched">Email
+                                is required.</small>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" id="password" ng-model="loginForm.password" class="form-control" placeholder="Password" required ng-class="{ 'is-invalid' : uiLoginForm.password.$invalid && uiLoginForm.password.$touched}">
-                            <small class="text-danger font-italic" ng-show="uiLoginForm.password.$error.required && uiLoginForm.password.$touched">Password is required.</small>
+                            <input type="password" name="password" id="password" ng-model="loginForm.password" class="form-control"
+                                placeholder="Password" required ng-class="{ 'is-invalid' : uiLoginForm.password.$invalid && uiLoginForm.password.$touched}">
+                            <small class="text-danger font-italic" ng-show="uiLoginForm.password.$error.required && uiLoginForm.password.$touched">Password
+                                is required.</small>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn btn-outline-warning font-weight-bold" ng-disabled="uiLoginForm.$invalid">
+                            <input type="submit" value="Login" class="btn btn-outline-warning font-weight-bold"
+                                ng-disabled="uiLoginForm.$invalid">
                         </div>
                     </form>
                 </div>
@@ -23,6 +31,9 @@
         </div>
         <div class="col-10 col-md-4 ml-auto mr-auto mt-3" ng-if="message">
             <h6 class="text-success text-center font-weight-bold font-italic">{{message}}</h6>
+        </div>
+        <div class="col-10 col-md-4 ml-auto mr-auto mt-3" ng-if="error">
+            <h6 class="text-danger text-center font-weight-bold font-italic">{{error}}</h6>
         </div>
     </div>
 </div>
