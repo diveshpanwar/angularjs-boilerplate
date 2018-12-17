@@ -1,3 +1,9 @@
+/**
+ * The main TodoMVC app module
+ *
+ * @type {angular.Module}
+ */
+
 var app = angular.module('app', ['controllers', 'ngRoute', 'ngResource']);
 
 app.config([
@@ -29,8 +35,8 @@ app.config([
         templateUrl: '../../components/dashboard/dashboard.component.html',
         controller: 'dashboardController',
         resolve: {
-          auth: function(AuthService) {
-            return AuthService.authenticate();
+          auth: function(AuthGuard) {
+            return AuthGuard.authenticate();
           }
         }
       })
@@ -62,7 +68,7 @@ app.run([
   }
 ]);
 
-app.factory('AuthService', function($q, $rootScope) {
+app.factory('AuthGuard', function($q, $rootScope) {
   return {
     authenticate: function() {
       //Authentication logic here

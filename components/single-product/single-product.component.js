@@ -2,7 +2,8 @@ angular.module('controllers').controller('singleProductController', [
   '$scope',
   '$http',
   '$routeParams',
-  function($scope, $http, $routeParams) {
+  'ProductService',
+  function($scope, $http, $routeParams, ProductService) {
     $scope.pageTitle = 'Produt Details';
     $scope.maxQty = [1, 2, 3, 4];
     $scope.rater = [1, 2, 3, 4, 5];
@@ -14,11 +15,10 @@ angular.module('controllers').controller('singleProductController', [
         'productId': $routeParams.productId
     };
     $scope.product = null;
-    $http.post('https://diveshpanwar-heroku1.herokuapp.com/singleProduct', $scope.data)
+    ProductService.fetchProduct($scope.data)
     .then(function(response) {
         $scope.product = response.data;
         $scope.contentLoaded = true;
-        console.log($scope.product);
       }).catch(function(error){
           console.log(error);
       });

@@ -3,7 +3,8 @@ angular.module('controllers').controller('loginController', [
   '$rootScope',
   '$http',
   '$location',
-  function($scope, $rootScope, $http, $location) {
+  'AuthService',
+  function($scope, $rootScope, $http, $location, AuthService) {
     $scope.heading = 'Login';
     $scope.loginForm = {};
     $scope.message = null;
@@ -11,11 +12,7 @@ angular.module('controllers').controller('loginController', [
     $scope.data = null;
     $scope.login = function() {
       $scope.message = $scope.error = null;
-      $http
-        .post(
-          'https://diveshpanwar-heroku1.herokuapp.com/login',
-          $scope.loginForm
-        )
+      AuthService.login($scope.loginForm)
         .then(function(response) {
           $scope.data = response.data;
           window.localStorage.setItem('user', JSON.stringify($scope.data));
