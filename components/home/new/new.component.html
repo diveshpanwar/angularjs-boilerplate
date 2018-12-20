@@ -1,5 +1,5 @@
-<div class="row mb-3">
-    <div class="row nav-item ml-auto mr-auto">
+<div class="row mb-3" style="background-color:#f8f9fa">
+    <div class="row nav-item ml-auto mr-auto mt-2 mb-2">
         <li class="col ml-auto mr-auto nav-link pointer special-font" ng-repeat="tab in tabs" ng-click="changeTabs(tab.name)" style="font-size: 12px;" ng-class="{'bg-warning': tab.status === 'active', 'text-white': tab.status === 'active'}">{{tab.name
             | uppercase}}</li>
     </div>
