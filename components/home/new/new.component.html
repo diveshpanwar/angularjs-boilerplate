@@ -1,0 +1,12 @@
+<div class="row mb-3">
+    <div class="row nav-item ml-auto mr-auto">
+        <li class="col ml-auto mr-auto nav-link pointer special-font" ng-repeat="tab in tabs" ng-click="changeTabs(tab.name)" style="font-size: 12px;" ng-class="{'bg-warning': tab.status === 'active', 'text-white': tab.status === 'active'}">{{tab.name
+            | uppercase}}</li>
+    </div>
+</div>
+
+<div class="row">
+    <div id="deals" class="col-12" ng-repeat="tab in tabs" ng-if="tab.status === 'active'">
+        <div ng-include="tab.template"></div>
+    </div>
+</div>

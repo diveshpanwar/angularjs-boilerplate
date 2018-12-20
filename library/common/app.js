@@ -30,6 +30,9 @@ app.config([
       .when('/pageNotFound', {
         templateUrl: '../../components/error/error.component.html',
         controller: 'errorController'
+      }).when('/filter', {
+        templateUrl: '../../components/home/new/new.component.html',
+        controller: 'NewController'
       })
       .when('/dashboard', {
         templateUrl: '../../components/dashboard/dashboard.component.html',
